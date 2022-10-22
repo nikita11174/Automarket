@@ -20,7 +20,7 @@ public class CarController : Controller
         var responce = await _carService.GetCars();
         if (responce.StatusCode == Domain.Enum.StatusCode.OK)
         {
-            return View(responce.Data);
+            return View(responce.Data.ToList());
         }
 
         return RedirectToAction("Error");
