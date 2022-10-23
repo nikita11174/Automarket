@@ -16,9 +16,9 @@ public class CarService : ICarService
         _carRepository = carRepository;
     }
 
-    public async Task<IBaseResponse<Car>> GetCar(int id)
+    public async Task<IBaseResponse<CarViewModel>> GetCar(int id)
     {
-        var baseResponse = new BaseResponse<Car>();
+        var baseResponse = new BaseResponse<CarViewModel>();
         try
         {
             var car = await _carRepository.Get(id);
@@ -29,12 +29,23 @@ public class CarService : ICarService
                 return baseResponse;
             }
 
-            baseResponse.Data = car;
+            var data = new CarViewModel()
+            {
+                DateCreate = car.DateCreate,
+                Description = car.Description,
+                TypeCar = car.TypeCar.ToString(),
+                Speed = car.Speed,
+                Model = car.Model
+            };
+
+            baseResponse.StatusCode = StatusCode.OK;
+            baseResponse.Data = data;
+            
             return baseResponse;
         }
         catch (Exception ex)
         {
-            return new BaseResponse<Car>()
+            return new BaseResponse<CarViewModel>()
             {
                 Description = $"[GetCar] : {ex.Message}",
                 StatusCode = StatusCode.InternalServerError

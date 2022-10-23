@@ -8,7 +8,7 @@ public interface ICarService
 {
     Task<IBaseResponse<IEnumerable<Car>>> GetCars();
     
-    Task<IBaseResponse<Car>> GetCar(int id);
+    Task<IBaseResponse<CarViewModel>> GetCar(int id);
 
     Task<IBaseResponse<CarViewModel>> CreateCar(CarViewModel carViewModel);
     Task<IBaseResponse<bool>> DeleteCar(int id);
