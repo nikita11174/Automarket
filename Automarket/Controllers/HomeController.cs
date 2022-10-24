@@ -1,26 +1,9 @@
-﻿using System.Diagnostics;
-using Automarket.DAL.Interfaces;
-using Automarket.Domain.Entity;
-using Microsoft.AspNetCore.Mvc;
-using Automarket.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Automarket.Controllers;
-
-public class HomeController : Controller
+namespace Automarket.Controllers
 {
-    public IActionResult Index()
+    public class HomeController : Controller
     {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Index() => View();
     }
 }

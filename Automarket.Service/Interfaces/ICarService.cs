@@ -1,18 +1,23 @@
-﻿using Automarket.Domain.Entity;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Automarket.Domain.Entity;
 using Automarket.Domain.Response;
 using Automarket.Domain.ViewModels.Car;
 
-namespace Automarket.Service.Interfaces;
-
-public interface ICarService
+namespace Automarket.Service.Interfaces
 {
-    Task<IBaseResponse<IEnumerable<Car>>> GetCars();
-    
-    Task<IBaseResponse<CarViewModel>> GetCar(int id);
+    public interface ICarService
+    {
+        BaseResponse<Dictionary<int, string>> GetTypes();
+        
+        IBaseResponse<List<Car>> GetCars();
+        
+        Task<IBaseResponse<CarViewModel>> GetCar(int id);
 
-    Task<IBaseResponse<CarViewModel>> CreateCar(CarViewModel carViewModel);
-    Task<IBaseResponse<bool>> DeleteCar(int id);
-    Task<IBaseResponse<Car>> GetByName(string name);
+        Task<IBaseResponse<Car>> Create(CarViewModel car, byte[] imageData);
 
-    Task<IBaseResponse<Car>> Edit(int id,CarViewModel model);
+        Task<IBaseResponse<bool>> DeleteCar(int id);
+
+        Task<IBaseResponse<Car>> Edit(int id, CarViewModel model);
+    }   
 }
