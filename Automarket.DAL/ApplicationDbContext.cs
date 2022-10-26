@@ -11,10 +11,14 @@ namespace Automarket.DAL
         {
             Database.EnsureCreated();
         }
-        
+
         public DbSet<Car> Cars { get; set; }
-        
+
         public DbSet<User> Users { get; set; }
+        
+        public DbSet<Profile> Profiles { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(builder =>
@@ -26,7 +30,7 @@ namespace Automarket.DAL
                     Password = HashPasswordHelper.HashPassowrd("123456"),
                     Role = Role.Admin
                 });
-                
+
                 builder.ToTable("Users").HasKey(x => x.Id);
 
                 builder.Property(x => x.Id)
@@ -34,6 +38,17 @@ namespace Automarket.DAL
 
                 builder.Property(x => x.Password).IsRequired();
                 builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
+            });
+
+            modelBuilder.Entity<Profile>(builder =>
+            {
+                builder.ToTable("Profiles").HasKey(x => x.Id);
+
+                builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
+                builder.Property(x => x.Age);
+                builder.Property(x => x.Address).HasMaxLength(250);
+                builder.Property(x => x.UserId);
             });
         }
     }
