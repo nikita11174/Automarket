@@ -3,6 +3,7 @@
 public class Profile
 {
     public long Id { get; set; }
+<<<<<<< HEAD
 
     public string Address { get; set; }
 
@@ -10,5 +11,14 @@ public class Profile
 
     public long UserId { get; set; }
 
+=======
+    
+    public string Address { get; set; }
+    
+    public short Age { get; set; }
+    
+    public long UserId { get; set; }
+    
+>>>>>>> origin/dev
     public User User { get; set; }
 }
