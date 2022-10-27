@@ -14,7 +14,7 @@ namespace Automarket.Domain.Helpers
                 var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
 
                 return hash;
-            }   
+            }
         }
     }
 }

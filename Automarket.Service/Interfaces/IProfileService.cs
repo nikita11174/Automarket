@@ -1,5 +1,7 @@
-﻿using Automarket.Domain.Entity;
+﻿using System.Threading.Tasks;
+using Automarket.Domain.Entity;
 using Automarket.Domain.Response;
+using Automarket.Domain.ViewModels.Car;
 using Automarket.Domain.ViewModels.Profile;
 
 namespace Automarket.Service.Interfaces
