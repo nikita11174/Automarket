@@ -1,35 +1,38 @@
-﻿using Automarket.DAL.Interfaces;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Automarket.DAL.Interfaces;
 using Automarket.Domain.Entity;
 
-namespace Automarket.DAL.Repositories;
-
-public class ProfileRepository : IBaseRepository<Profile>
+namespace Automarket.DAL.Repositories
 {
-    private readonly ApplicationDbContext _db;
-
-    public ProfileRepository(ApplicationDbContext db)
+    public class ProfileRepository : IBaseRepository<Profile>
     {
-        _db = db;
-    }
+        private readonly ApplicationDbContext _db;
 
-    public async Task Create(Profile entity)
-    {
-        await _db.Profiles.AddAsync(entity);
-        await _db.SaveChangesAsync();
-    }
+        public ProfileRepository(ApplicationDbContext db)
+        {
+            _db = db;
+        }
 
-    public IQueryable<Profile> GetAll()
-    {
-        return _db.Profiles;
-    }
+        public async Task Create(Profile entity)
+        {
+            await _db.Profiles.AddAsync(entity);
+            await _db.SaveChangesAsync();
+        }
 
-    public Task Delete(Profile entity)
-    {
-        throw new System.NotImplementedException();
-    }
+        public IQueryable<Profile> GetAll()
+        {
+            return _db.Profiles;
+        }
 
-    public Task<Profile> Update(Profile entity)
-    {
-        throw new System.NotImplementedException();
+        public Task Delete(Profile entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Profile> Update(Profile entity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
