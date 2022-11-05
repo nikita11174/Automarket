@@ -39,6 +39,7 @@ namespace Automarket.Service.Implementations
                         Name = x.Name,
                         Role = x.Role.GetDisplayName()
                     });
+                
                 return new BaseResponse<IEnumerable<UserViewModel>>()
                 {
                     Data = users,
